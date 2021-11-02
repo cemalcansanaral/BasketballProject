@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable name="playerDetailFragment" type="com.cemalcansanaral.basketballproject.fragment.PlayerDetailFragment" />
+        <variable name="playerObject" type="com.cemalcansanaral.basketballproject.entity.Players" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background"
+        tools:context=".fragment.PlayerDetailFragment"
+        tools:layout="@layout/fragment_player_detail">
+
+        <ImageView
+            android:id="@+id/imageViewPlayersDetail"
+            android:layout_width="200dp"
+            android:layout_height="250dp"
+            android:layout_marginTop="16dp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/player_detail_image_background"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@tools:sample/avatars" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="0dp"
+            android:layout_height="250dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="111dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="32dp"
+            android:background="@drawable/player_card_background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewPlayersDetail" />
+
+        <TextView
+            android:id="@+id/textViewPlayersDetailFullName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/comfortaa"
+            android:text='@{playerObject.first_name + " " + playerObject.last_name}'
+            android:textColor="@color/white"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewPlayersDetail" />
+
+        <TextView
+            android:id="@+id/textViewPlayersDetailTeamName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text='@{playerObject.team.full_name}'
+            android:textColor="@color/black"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewPlayersDetailPosition" />
+
+        <TextView
+            android:id="@+id/textViewPlayersDetailHeightFeet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="45dp"
+            android:text='@{"Height Feet: " + playerObject.height_feet}'
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="@+id/view"
+            app:layout_constraintTop_toTopOf="@+id/view" />
+
+        <TextView
+            android:id="@+id/textViewPlayersDetailHeightInches"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text='@{"Height Inches: " + playerObject.height_inches}'
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewPlayersDetailHeightFeet"
+            app:layout_constraintEnd_toEndOf="@+id/view"
+            app:layout_constraintTop_toTopOf="@+id/textViewPlayersDetailHeightFeet" />
+
+        <TextView
+            android:id="@+id/textViewPlayersDetailWightPounds"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text='@{"Weight Pounds: " + playerObject.weight_pounds}'
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewPlayersDetailPosition"
+            app:layout_constraintStart_toStartOf="@+id/view"
+            app:layout_constraintTop_toTopOf="@+id/textViewPlayersDetailPosition" />
+
+        <TextView
+            android:id="@+id/textViewPlayersDetailPosition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:text='@{"Position: " + playerObject.position}'
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="@+id/view"
+            app:layout_constraintTop_toBottomOf="@+id/textViewPlayersDetailHeightFeet" />
+
+        <TextView
+            android:id="@+id/textViewPlayersDetailTeamCity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text='@{"City: " + playerObject.team.city}'
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="@+id/view"
+            app:layout_constraintTop_toBottomOf="@+id/textViewPlayersDetailTeamName" />
+
+        <TextView
+            android:id="@+id/textViewPlayersDetailTeamConference"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text='@{"Conference: " + playerObject.team.conference}'
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewPlayersDetailTeamCity"
+            app:layout_constraintEnd_toEndOf="@+id/view"
+            app:layout_constraintTop_toTopOf="@+id/textViewPlayersDetailTeamCity" />
+
+        <TextView
+            android:id="@+id/textViewPlayersDetailTeamDivision"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="45dp"
+            android:text='@{"Division: " + playerObject.team.division}'
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/view"
+            app:layout_constraintStart_toStartOf="@+id/view"
+            app:layout_constraintTop_toBottomOf="@+id/textViewPlayersDetailTeamCity" />
+
+        <TextView
+            android:id="@+id/textViewPlayersDetailAbbreviation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text='@{"Abbreviation: " + playerObject.team.abbreviation}'
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewPlayersDetailTeamDivision"
+            app:layout_constraintEnd_toEndOf="@+id/view"
+            app:layout_constraintTop_toTopOf="@+id/textViewPlayersDetailTeamDivision" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>
